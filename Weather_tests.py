@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
+import os
 
 import json
+path_conf = input("enter path for config file")
+path_data = input("enter path for data file")
+if not os.path.isfile(path_conf):
+    print(f"Error: Config file '{path_conf}' not found.")
+    exit()
 
-with open("config.json", "r") as file:
+if not os.path.isfile(path_data):
+    print(f"Error: Data file '{path_data}' not found.")
+    exit()
+with open(path_conf, "r") as file:
     content_conf = json.load(file)
 
-with open("data.json", "r") as file:
+with open(path_data, "r") as file:
     content_data = json.load(file)
 
 def check_data(content_conf, content_data):
